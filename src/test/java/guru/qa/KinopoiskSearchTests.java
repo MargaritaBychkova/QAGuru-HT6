@@ -61,4 +61,29 @@ public class KinopoiskSearchTests {
         $$(".search_results").find(Condition.text(testData)).shouldBe(visible);
     }
 
+    static Stream <Arguments> kinopoiskMethodSourceTest() {
+        return Stream.of(
+                Arguments.of("Видоизменённый углерод", "фантастика"),
+                Arguments.of("Властелин колец", " фэнтези")
+        );
+    }
+
+    @MethodSource ("kinopoiskMethodSourceTest")
+    @ParameterizedTest
+    void kinopoiskMethodSourceTest(String testData, String expectedResult) {
+
+        Selenide.open("https://www.kinopoisk.ru/");
+
+        //Steps
+
+        $("[name=kp_query]").setValue(testData);
+        $("[type=submit]").click();
+
+        //Expected Result
+
+        $$(".search_results").find(Condition.text(testData)).shouldBe(visible);
+
+
+    }
+
 }
