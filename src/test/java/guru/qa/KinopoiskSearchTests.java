@@ -70,7 +70,7 @@ public class KinopoiskSearchTests {
 
     @MethodSource ("kinopoiskMethodSourceTest")
     @ParameterizedTest
-    void kinopoiskMethodSourceTest(String testData) {
+    void kinopoiskMethodSourceTest(String testData, String expectedResult) {
 
         Selenide.open("https://www.kinopoisk.ru/");
 
@@ -81,7 +81,7 @@ public class KinopoiskSearchTests {
 
         //Expected Result
 
-        $$(".search_results").find(Condition.text(testData)).shouldBe(visible);
+        $$(".search_results").find(Condition.text(expectedResult)).shouldBe(visible);
 
 
     }
