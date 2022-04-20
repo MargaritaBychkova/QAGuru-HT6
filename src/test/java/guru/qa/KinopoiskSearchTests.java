@@ -70,7 +70,7 @@ public class KinopoiskSearchTests {
 
     @MethodSource ("kinopoiskMethodSourceTest")
     @ParameterizedTest
-    void kinopoiskMethodSourceTest(String testData, String expectedResult) {
+    void kinopoiskMethodSourceTest(String testData) {
 
         Selenide.open("https://www.kinopoisk.ru/");
 
